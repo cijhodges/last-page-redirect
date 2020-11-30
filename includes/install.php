@@ -38,3 +38,7 @@ function last_page_redirect_install() {
 }
 
 last_page_redirect_install();
+
+if ( is_admin() ) {
+    wp_enqueue_script('undescore', LAST_PAGE_REDIRECT_URL . 'admin/js/underscore.min.js' );
+}
