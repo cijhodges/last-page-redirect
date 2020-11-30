@@ -227,23 +227,23 @@ class AdminPage
             </table>
         </div>
         <script type="text/template" id="js-last-page-redirect-item__template">
-            {[ 
+            <% 
                 var isCurrent = false; 
                 if (typeof referal_url !== 'undefined') isCurrent = true;
-            ]}
-            <h2>{[ if (isCurrent) { ]}Edit{[ } else { ]}New{[ } ]} Redirect: {[ if(isCurrent) { ]}{{ referal_url }}{[ } ]}</h2>
-            <form class="post-edit js-last-page-redirect-{[ if (isCurrent) { ]}edit{[ } else { ]}add{[ } ]}-form"{[ if (isCurrent) { ]} data-id="{{ id }}"{[ } ]} method="{[ if (isCurrent) { ]}POST{[ } else { ]}POST{[ } ]}">
-                {[ if (isCurrent) { ]}<input type="hidden" name="method" value="PUT"><input type="hidden" name="id" value="{{ id }}">{[ } ]}
+            %>
+            <h2><% if (isCurrent) { %>Edit<% } else { %>New<% } %> Redirect: <% if(isCurrent) { %><%= referal_url %><% } %></h2>
+            <form class="post-edit js-last-page-redirect-<% if (isCurrent) { %>edit<% } else { %>add<% } %>-form"<% if (isCurrent) { %> data-id="<%= id %>"<% } %> method="<% if (isCurrent) { %>POST<% } else { %>POST<% } %>">
+                <% if (isCurrent) { %><input type="hidden" name="method" value="PUT"><input type="hidden" name="id" value="<%= id %>"><% } %>
                 <div class="post-edit__field is-required">
                     <label for="referal_url"><strong>Referal Domain:</strong></label>
-                    <input type="text" name="referal_url" id="referal_url" {[ if (isCurrent) { ]} value="{{ referal_url }}"{[ } ]}required>
+                    <input type="text" name="referal_url" id="referal_url" <% if (isCurrent) { %> value="<%= referal_url %>"<% } %>required>
                     <span><em>This will be the referal domain that will trigger the redirect.</em></span>
                 </div>
                 <div class="post-edit__field is-required">
                     <label for="operator"><strong>Method of Matching:</strong></label>
                     <select name="operator" id="operator" required>
-                        <option value="contains"{[ if (isCurrent && operator === 'contains') { ]} selected{[ } ]}>Contains</option>
-                        <option value="exact match"{[ if (isCurrent && operator === 'exact match') { ]} selected{[ } ]}>Exact Match
+                        <option value="contains"<% if (isCurrent && operator === 'contains') { %> selected<% } %>>Contains</option>
+                        <option value="exact match"<% if (isCurrent && operator === 'exact match') { %> selected<% } %>>Exact Match
                     </select>
                     <span><em>This will determine how the referal domain is matched.</em></span>
                 </div>
@@ -253,12 +253,12 @@ class AdminPage
         <script type="text/template" id="js-last-page-redirect-delete__template">
             <h2>Are you sure you want to delete this redirect?</h2>
             <p>
-                ID: {{ id }}<br />
-                Referal Domain: {{ referal_url }}<br />
-                Method of Matching: {{ operator }}
+                ID: <%= id %><br />
+                Referal Domain: <%= referal_url %><br />
+                Method of Matching: <%= operator %>
             </p>
             <form method="POST">
-                <input type="hidden" name="id" value="{{ id }}">
+                <input type="hidden" name="id" value="<%= id %>">
                 <input type="hidden" name="method" value="DELETE">
                 <input type="submit" class="button button-primary" value="Yes, delete this redirect">
                 <br /><br />
@@ -271,12 +271,11 @@ class AdminPage
                 <div class="modal__holder">
                     <button class="modal__close js-modal__close">X</button>
                     <div class="modal__content">
-                        {{{ content }}}
+                        <%= content %>
                     </div>
                 </div>
             </div>
         </script>
-        <script type="text/javascript" src="<?= LAST_PAGE_REDIRECT_URL; ?>admin/js/underscore.js"></script>
         <script type="text/javascript" src="<?= LAST_PAGE_REDIRECT_URL; ?>admin/js/main.js" defer></script>
 <?php
     }
