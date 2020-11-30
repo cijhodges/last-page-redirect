@@ -1,0 +1,19 @@
+.post {
+    transition: .5s linear;
+}
+
+.post.is-added {
+    background: #d1e8f4 !important;
+}
+
+.post-edit__field {
+    width: 100%;
+    margin: 0 0 1rem;
+}
+
+.post-edit__field > input[type="text"],
+.post-edit__field > select {
+    display: block;
+    width: 100%;
+    margin: .25rem 0 0;
+}
