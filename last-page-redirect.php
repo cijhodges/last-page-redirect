@@ -18,8 +18,6 @@ if ( is_admin() ) {
     $updater->set_username( 'cijhodges' ); // set username
     $updater->set_repository( 'last-page-redirect' ); // set repo
     $updater->initialize();
-
-    print_r( $updater );
 } elseif ( $GLOBALS['pagenow'] !== 'wp-login.php' ) {
     new LastPageRedirect\Checker();
 }
