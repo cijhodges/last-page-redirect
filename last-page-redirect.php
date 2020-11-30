@@ -3,7 +3,7 @@
     * Plugin Name: Last Page Redirect
     * Plugin URI: https://github.com/cijhodges/last-page-redirect
     * Description: Redirect users to the last page of their session based on a referal URL.
-    * Version: 0.0.1
+    * Version: 1.0.1
     * Author: Compassion Web & Interactive
     * Author URI: https://www.compassion.com/
 */
