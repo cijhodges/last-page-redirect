@@ -3,7 +3,7 @@
     * Plugin Name: Last Page Redirect
     * Plugin URI: https://github.com/cijhodges/last-page-redirect
     * Description: Redirect users to the last page of their session based on a referal URL.
-    * Version: 1.0.7
+    * Version: 1.0.8
     * Author: Compassion Web & Interactive
     * Author URI: https://www.compassion.com/
 */
@@ -24,7 +24,7 @@ if ( is_admin() ) {
     $updater->initialize();
 } elseif ( 
     $GLOBALS['pagenow'] !== 'wp-login.php' 
-    || strpos( $_SERVER['REQUEST_URI'], 'custom-login-page' ) === false
+    && strpos( $_SERVER['REQUEST_URI'], 'custom-login-page' ) === false
 ) {
     add_action( 'template_redirect', 'init_last_page_redirect' );
 }
