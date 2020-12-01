@@ -24,7 +24,7 @@ if ( is_admin() ) {
     $updater->initialize();
 } elseif ( 
     $GLOBALS['pagenow'] !== 'wp-login.php' 
-    || strpos( $_SERVER['REQUEST_URI'], 'custom-login-page' ) === false
+    && strpos( $_SERVER['REQUEST_URI'], 'custom-login-page' ) === false
 ) {
     add_action( 'template_redirect', 'init_last_page_redirect' );
 }
