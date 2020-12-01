@@ -56,6 +56,16 @@ EOD;
                     var lastPage__referrer = document.referrer;
                     var lastPage__redirect = readCookie('last-page-redirect');
                     setCookie('last-page-redirect', window.location.toString(), 1);
+EOD;
+
+        if ( !is_user_logged_in() ) {
+            $markup .= <<<EOD
+                    window.location.href = '/wp-login.php?redirect_to=' + window.location.href;
+                    return false;
+EOD;
+        }
+
+        $markup .= <<<EOD
 
                     if (!lastPage__redirect) return false;
                     if (lastPage__redirect ===  readCookie('last-page-redirect')) return false;
